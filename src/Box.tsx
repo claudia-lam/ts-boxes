@@ -1,5 +1,5 @@
 import { BoxInterface } from "./BoxList";
-
+// move interface above docstring OR put inside own interfaces file
 /** Colored box presentation
  *
  * Props:

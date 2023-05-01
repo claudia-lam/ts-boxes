@@ -2,21 +2,22 @@ import React, { useState } from "react";
 import Box from "./Box";
 import NewBoxForm from "./NewBoxForm";
 
+interface BoxInterface {
+  id: string;
+  width: number | string;
+  height: number | string;
+  backgroundColor: string;
+}
+
 /** Manage list of boxes
  *
  * State:
  * - boxes: [ { id, width, height, backgroundColor }, ... ]
  */
 
-interface BoxInterface {
-  id: string;
-  width: number;
-  height: number;
-  backgroundColor: string;
-}
 
 function BoxList() {
-  const [boxes, setBoxes] = useState<BoxInterface[] | []>([]);
+  const [boxes, setBoxes] = useState<BoxInterface[]>([]);
 
   /** add box with given { id, width, height, backgroundColor } */
   function add(newBox: BoxInterface): void {
@@ -46,4 +47,4 @@ function BoxList() {
 }
 
 export default BoxList;
-export type { BoxInterface };
+export type { BoxInterface }; // Consider interfaces file

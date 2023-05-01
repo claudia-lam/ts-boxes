@@ -14,7 +14,12 @@ import { BoxInterface } from "./BoxList";
  * BoxList -> NewBoxForm
  */
 
-function NewBoxForm({ createBox }) {
+
+// interface NewBoxFormPropsInterface {
+//   createBox: (newBox: BoxInterface) => void;
+// }
+
+function NewBoxForm({ createBox }: {createBox: (newBox: BoxInterface) => void}) {
   const [formData, setFormData] = useState({
     height: "",
     width: "",
@@ -22,7 +27,7 @@ function NewBoxForm({ createBox }) {
   });
 
   /** Update form input. */
-  function handleChange(evt) {
+  function handleChange(evt: React.ChangeEvent<HTMLInputElement>) {
     const { name, value } = evt.target;
     setFormData((formData) => ({
       ...formData,
@@ -31,7 +36,7 @@ function NewBoxForm({ createBox }) {
   }
 
   /** Submit form: call function from parent & clear inputs. */
-  function handleSubmit(evt) {
+  function handleSubmit(evt: React.FormEvent) {
     evt.preventDefault();
     createBox({ ...formData, id: uuid() });
     setFormData({ height: "", width: "", backgroundColor: "" });
